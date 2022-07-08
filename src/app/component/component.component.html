@@ -1,0 +1,137 @@
+<div class="container-fluid p-2">
+  <div class="row g-2">
+    <div class="col-8">
+      <div class="card justify-content-around">
+        <div class="mb-3">
+          <input
+            class="form-control input-number me-3"
+            type="text"
+            placeholder=""
+          />
+          <button
+            type="button"
+            class="btn btn-outline-success mt-2"
+            (click)="getConnection()"
+          >
+            Conectar
+          </button>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            style="position: absolute; right: 0; top: 0; margin: 10px"
+            *ngIf="error === true"
+          >
+            Error!
+          </div>
+
+          <div
+            class="alert alert-success"
+            role="alert"
+            style="position: absolute; right: 0; top: 0; margin: 10px"
+            *ngIf="error === false"
+          >
+            Conectado!
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between buttons">
+          <button type="button" class="btn btn-success me-1">Capturar</button>
+          <button type="button" class="btn btn-secondary me-1">Imprimir</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card">
+        <h5 class="card-title">Datos</h5>
+        <form (ngSubmit)="submitForm()">
+          <!-- [formGroup]="validateForm" -->
+          <div class="mb-1">
+            <input
+              class="form-control form-control-sm"
+              type="text"
+              placeholder="Usuario"
+            />
+          </div>
+          <div class="mb-1">
+            <input
+              class="form-control form-control-sm"
+              type="text"
+              placeholder="Material"
+            />
+          </div>
+          <div class="mb-1">
+            <input
+              class="form-control form-control-sm"
+              type="text"
+              placeholder="Lote"
+            />
+          </div>
+          <div class="mb-1">
+            <input
+              class="form-control form-control-sm"
+              type="text"
+              placeholder="Concepto"
+            />
+          </div>
+          <input type="submit" style="display: none" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-1 g-2">
+    <div class="col-8">
+      <div class="card">
+        <div
+          class="table-wrapper-scroll-y my-custom-scrollbar table-responsive"
+        >
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Net</th>
+                <th scope="col">Unit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let objeto of objetosPesados">
+                <td>{{ objeto.date }}</td>
+                <td>{{ objeto.time }}</td>
+                <td>{{ objeto.net }}</td>
+                <td>{{ objeto.unit }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <input
+          class="form-control"
+          type="text"
+          aria-label=".form-control-lg example"
+        />
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card">
+        <h6 class="card-title">Datos Estadísticos</h6>
+        <div
+          class="table-responsive table-wrapper-scroll-y my-custom-scrollbar"
+        >
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of dataEstadistaca">
+                <td>{{ data.data }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
